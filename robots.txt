@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pozitifyasamatolyesi.github.io/Pozitif-yasam/sitemap.xml
