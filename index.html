@@ -44,20 +44,61 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "Lale Zere | Astrolog & Holistik Sağlık Koçu",
-  "description": "Lale Zere ile doğum haritası analizi, ilişki uyum analizi, EFT, NLP, Reiki ve spiritüel koçluk hizmetleri.",
-  "url": "https://www.lalezere.com/",
-  "inLanguage": "tr-TR",
-  "dateModified": "2026-08-18",
-  "about": {
-    "@type": "Person",
-    "name": "Lale Zere",
-    "jobTitle": "Astrolog & Holistik Tıp Sağlık Koçu",
-    "worksFor": { "@type": "Organization", "name": "Pozitif Yaşam Atölyesi" },
-    "sameAs": ["https://instagram.com/pozitifyasam2026"],
-    "knowsAbout": ["Astroloji", "EFT", "NLP", "Bioenerji", "Usui Reiki", "Spiritüel Koçluk", "Nefes Koçluğu"]
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/",
+      "name": "Lale Zere | Astrolog & Holistik Sağlık Koçu",
+      "description": "Lale Zere ile doğum haritası analizi, ilişki uyum analizi, EFT, NLP, Reiki ve spiritüel koçluk hizmetleri.",
+      "url": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/",
+      "inLanguage": "tr-TR",
+      "dateModified": "2026-08-18",
+      "about": {
+        "@type": "Person",
+        "name": "Lale Zere",
+        "jobTitle": "Astrolog & Holistik Tıp Sağlık Koçu",
+        "worksFor": { "@type": "Organization", "name": "Pozitif Yaşam Atölyesi" },
+        "sameAs": ["https://instagram.com/pozitifyasam2026"],
+        "knowsAbout": ["Astroloji", "EFT", "NLP", "Bioenerji", "Usui Reiki", "Spiritüel Koçluk", "Nefes Koçluğu"]
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/blog/dogum-haritasi-rehberi.html",
+      "headline": "Doğum Haritan Sana Ne Anlatır? Yeni Başlayanlar İçin Rehber",
+      "description": "Doğum haritan sana ne anlatır? Güneş, Ay ve Yükselen burcun anlamını, astrolojiye yeni başlayanlar için Lale Zere kaleme aldı.",
+      "author": { "@type": "Person", "name": "Lale Zere" },
+      "publisher": { "@type": "Organization", "name": "Pozitif Yaşam Atölyesi" },
+      "mainEntityOfPage": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/blog/dogum-haritasi-rehberi.html",
+      "datePublished": "2026-08-18",
+      "dateModified": "2026-08-18",
+      "inLanguage": "tr-TR"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/blog/iliski-uyum-astrolojisi.html",
+      "headline": "İlişkinde Hep Aynı Duvara mı Çarpıyorsun?",
+      "description": "Venüs, Mars ve Ay uyumu ilişkilerde neyi belirler? Lale Zere, ilişki uyum analizinde nelere baktığını anlatıyor.",
+      "author": { "@type": "Person", "name": "Lale Zere" },
+      "publisher": { "@type": "Organization", "name": "Pozitif Yaşam Atölyesi" },
+      "mainEntityOfPage": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/blog/iliski-uyum-astrolojisi.html",
+      "datePublished": "2026-08-18",
+      "dateModified": "2026-08-18",
+      "inLanguage": "tr-TR"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/blog/2026-ruhsal-denge.html",
+      "headline": "2026'da Zihinsel ve Ruhsal Dengeni Korumanın 5 Yolu",
+      "description": "2026'nın hızlı temposunda dengeni korumak için EFT, nefes çalışması, NLP ve daha fazlasını içeren 5 pratik öneri.",
+      "author": { "@type": "Person", "name": "Lale Zere" },
+      "publisher": { "@type": "Organization", "name": "Pozitif Yaşam Atölyesi" },
+      "mainEntityOfPage": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/blog/2026-ruhsal-denge.html",
+      "datePublished": "2026-08-18",
+      "dateModified": "2026-08-18",
+      "inLanguage": "tr-TR"
+    }
+  ]
 }
 </script>
 
@@ -285,6 +326,19 @@
   .blog-topic .blog-body{ padding:0 20px 20px 52px; color:var(--champagne-dim); font-size:14px; line-height:1.7; }
   .blog-cta{ margin-top:30px; text-align:center; }
 
+  /* full-text blog article cards */
+  .post-grid{ display:flex; flex-direction:column; gap:16px; margin-bottom:44px; }
+  .post-card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:22px 24px; scroll-margin-top:90px;
+  }
+  .post-card-head{ display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; }
+  .post-card-head .g{ font-family:'Cormorant Garamond', serif; font-style:italic; color:var(--gold-soft); font-size:22px; line-height:1.3; flex-shrink:0; }
+  .post-card-title{ font-size:18.5px; color:var(--champagne); font-weight:500; line-height:1.3; }
+  .post-card-meta{ display:block; font-size:11.5px; color:var(--champagne-dim); letter-spacing:0.08em; text-transform:uppercase; margin-top:4px; }
+  .post-card p{ font-size:14px; color:var(--champagne-dim); line-height:1.7; margin-bottom:12px; }
+  .post-card p:last-child{ margin-bottom:0; }
+
   footer{ border-top:1px solid var(--line); padding:32px 0; text-align:center; }
   footer .brand{ justify-content:center; display:inline-flex; margin-bottom:8px; }
   footer p{ font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color: rgba(237,227,204,0.4); }
@@ -462,23 +516,44 @@
     <div class="section-head reveal">
       <div class="eyebrow">Blog</div>
       <h2>Astroloji ve Şifa Üzerine Yazılarım</h2>
-      <p class="blog-intro">Danışanlarımdan en çok gelen sorulara ve seanslarımda kullandığım yöntemlere dair kısa yazılar hazırladım. Kartlara dokunarak devamını okuyabilirsin.</p>
+      <p class="blog-intro">Danışanlarımdan en çok gelen sorulara ve seanslarımda kullandığım yöntemlere dair kısa yazılar hazırladım.</p>
     </div>
 
     <h3 style="font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-soft); font-family:'Jost',sans-serif; font-weight:500; margin-bottom:14px;">Yazılarım</h3>
-    <div class="blog-list reveal" style="margin-bottom:40px;">
-      <details class="blog-topic">
-        <summary><span class="g">✺</span><span class="t">Doğum Haritan Sana Ne Anlatır? Yeni Başlayanlar İçin Rehber</span><span class="chevron">›</span></summary>
-        <div class="blog-body">Doğum haritan, doğduğun anda gökyüzünün bir fotoğrafı. Güneş, Ay ve gezegenlerin o an nerede olduğunu gösteren bu harita, kişiliğinin, güçlü yanlarının ve zorlandığın alanların şifresini taşıyor. Danışanlarıma en çok sorulan sorulardan biri: "Burcumu biliyorum ama bu yetmiyor mu?" Cevap: hayır. Güneş burcun hikayenin sadece bir bölümü — Ay burcun duygusal dünyanı, Yükselen burcun dışarıya yansıyan halini, Merkür'ün konumu iletişim tarzını anlatır. Bir doğum haritası analizinde bu parçaları tek tek değil, birlikte okurum; çünkü asıl anlam, aralarındaki ilişkide saklı. Kendi haritanı merak ediyorsan, birlikte oturup satır satır okuyabiliriz.</div>
-      </details>
-      <details class="blog-topic">
-        <summary><span class="g">♡</span><span class="t">İlişkinde Hep Aynı Duvara mı Çarpıyorsun?</span><span class="chevron">›</span></summary>
-        <div class="blog-body">"Neden hep aynı tip insanlarla aynı sorunları yaşıyorum?" Danışanlarımdan en sık duyduğum cümlelerden biri bu. Astrolojik uyum, sadece "hangi burç hangi burçla anlaşır" basitliğinde değil. Venüs'ün konumu neyi sevdiğini, Mars'ın konumu nasıl çatıştığını, Ay'ların birbiriyle ilişkisi duygusal güvenliği nasıl kurduğunuzu anlatır. İki haritayı yan yana koyduğumda, bir ilişkinin neresinin kolay aktığını, neresinde bilinçli çaba gerektiğini net görebiliyorum. Bir ilişki uyum analizi seansında, ikinizin haritasını birlikte okuyor, nerede doğal bir akış olduğunu, nerede sabır ve iletişim gerektiğini konuşuyoruz. Kendinle ya da partnerinle bu farkındalığı kazanmak istersen, kapım açık.</div>
-      </details>
-      <details class="blog-topic">
-        <summary><span class="g">◈</span><span class="t">2026'da Zihinsel ve Ruhsal Dengeni Korumanın 5 Yolu</span><span class="chevron">›</span></summary>
-        <div class="blog-body">2026 hepimiz için hızlı, yoğun ve dijital bir yıl olmaya devam ediyor. Bu tempoda zihinsel ve ruhsal dengeyi korumak, lüks değil bir ihtiyaç. Danışanlarıma önerdiğim beş basit ama etkili adım var: Birincisi, günde birkaç dakika bilinçli nefes. İkincisi, duygularını bastırmak yerine EFT gibi tekniklerle serbest bırakmak. Üçüncüsü, zihnindeki tekrarlayan düşünce kalıplarını NLP ile fark etmek. Dördüncüsü, enerjini nelerin yükselttiğini nelerin tükettiğini takip etmek; bioenerji ve Reiki bu dengeyi desteklemekte çok değerli. Beşincisi, kendi doğum haritanı tanımak — çünkü kendini anlamak, dengeyi korumanın temeli. Bu yılı kendine daha çok zaman ayırarak geçirmek istersen, seninle tanışmak isterim.</div>
-      </details>
+    <div class="post-grid reveal">
+      <a class="post-teaser" href="blog/dogum-haritasi-rehberi.html">
+        <div class="post-teaser-head">
+          <span class="g">✺</span>
+          <div>
+            <h3 class="post-teaser-title">Doğum Haritan Sana Ne Anlatır? Yeni Başlayanlar İçin Rehber</h3>
+            <span class="post-teaser-meta">Astroloji · 6 dk okuma</span>
+          </div>
+        </div>
+        <p class="post-teaser-excerpt">Güneş burcunu bilmek yeterli mi? Ay, Yükselen ve diğer katmanların doğum haritandaki gerçek anlamı.</p>
+        <span class="post-teaser-more">Devamını Oku →</span>
+      </a>
+      <a class="post-teaser" href="blog/iliski-uyum-astrolojisi.html">
+        <div class="post-teaser-head">
+          <span class="g">♡</span>
+          <div>
+            <h3 class="post-teaser-title">İlişkinde Hep Aynı Duvara mı Çarpıyorsun?</h3>
+            <span class="post-teaser-meta">İlişki Astrolojisi · 5 dk okuma</span>
+          </div>
+        </div>
+        <p class="post-teaser-excerpt">Venüs, Mars ve Ay uyumu ilişkilerde neyi belirler? Uyum analizinde gerçekte nelere baktığımı anlatıyorum.</p>
+        <span class="post-teaser-more">Devamını Oku →</span>
+      </a>
+      <a class="post-teaser" href="blog/2026-ruhsal-denge.html">
+        <div class="post-teaser-head">
+          <span class="g">◈</span>
+          <div>
+            <h3 class="post-teaser-title">2026'da Zihinsel ve Ruhsal Dengeni Korumanın 5 Yolu</h3>
+            <span class="post-teaser-meta">Holistik Yaşam · 4 dk okuma</span>
+          </div>
+        </div>
+        <p class="post-teaser-excerpt">Hızlı ve dijital bir yılda dengeni korumak için nefes, EFT, NLP ve daha fazlasını içeren 5 pratik öneri.</p>
+        <span class="post-teaser-more">Devamını Oku →</span>
+      </a>
     </div>
 
     <h3 style="font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-soft); font-family:'Jost',sans-serif; font-weight:500; margin-bottom:14px;">Yöntemlerim</h3>
