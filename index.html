@@ -64,7 +64,239 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<style>
+  :root{
+    --ink:#0B1120;
+    --ink-2:#121A2E;
+    --card:#161F36;
+    --line: rgba(233,223,200,0.14);
+    --gold:#C9A438;
+    --gold-soft:#E4C874;
+    --champagne:#EDE3CC;
+    --champagne-dim: rgba(237,227,204,0.68);
+    --radius: 18px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--ink);
+    color: var(--champagne);
+    font-family: 'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+    position:relative;
+  }
+  /* subtle celestial starfield */
+  body::before{
+    content:"";
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 18%, rgba(237,227,204,0.55), transparent),
+      radial-gradient(1.5px 1.5px at 78% 8%, rgba(237,227,204,0.4), transparent),
+      radial-gradient(1px 1px at 42% 32%, rgba(228,200,116,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 88% 62%, rgba(237,227,204,0.35), transparent),
+      radial-gradient(1px 1px at 22% 72%, rgba(228,200,116,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 65% 88%, rgba(237,227,204,0.3), transparent),
+      radial-gradient(1px 1px at 8% 55%, rgba(237,227,204,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 95% 30%, rgba(228,200,116,0.35), transparent);
+    background-repeat: repeat;
+    background-size: 100% 2200px;
+    opacity:0.7;
+  }
+  body > *{ position:relative; z-index:1; }
+
+  /* scroll reveal */
+  .reveal{ opacity:0; transform: translateY(22px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion: reduce){ .reveal{ opacity:1; transform:none; transition:none; } }
+  h1,h2,h3,.serif{ font-family:'Cormorant Garamond', serif; font-weight:500; letter-spacing:0.01em; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 26px; }
+
+  .eyebrow{
+    font-size:12px; letter-spacing:0.26em; text-transform:uppercase;
+    color: var(--gold-soft);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:12px;
+  }
+  .eyebrow::before{ content:"✦"; font-size:11px; }
+  .eyebrow.center{ justify-content:center; }
+
+  /* orbit decoration */
+  .orbit-field{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+  .ring{ position:absolute; border-radius:50%; border:1px solid rgba(201,164,56,0.28); }
+  .ring.dashed{ border-style:dashed; border-color: rgba(237,227,204,0.14); }
+  .ring.spin{ animation: spin 140s linear infinite; }
+  @keyframes spin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+  @media (prefers-reduced-motion: reduce){ .ring.spin{ animation:none; } }
+
+  /* nav */
+  header{ position:sticky; top:0; z-index:50; background: rgba(11,17,32,0.86); backdrop-filter: blur(10px); border-bottom:1px solid var(--line); }
+  nav{ display:flex; align-items:center; justify-content:space-between; padding:16px 26px; max-width:1080px; margin:0 auto; }
+  .brand{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:21px; }
+  .brand b{ font-style:normal; font-weight:600; color:var(--gold-soft); }
+  .nav-links{ display:flex; gap:28px; font-size:13.5px; }
+  .nav-links a{ color:var(--champagne-dim); transition:color .2s ease; position:relative; padding-bottom:4px; }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--gold-soft);
+    transition: width .25s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{ color:var(--gold-soft); }
+  .nav-links a.active{ color:var(--gold-soft); }
+  .nav-links a.active::after{ width:100%; }
+  .nav-cta{ display:inline-flex; align-items:center; gap:7px; border:1px solid var(--gold-soft); color:var(--gold-soft) !important; padding:8px 18px; border-radius:999px; font-size:12.5px; transition:.2s ease; }
+  .nav-cta:hover, .nav-cta:focus-visible{ background:var(--gold-soft); color:var(--ink) !important; }
+  .nav-actions{ display:flex; align-items:center; gap:10px; }
+  .nav-blog-pill{
+    display:none; align-items:center; gap:6px;
+    color:var(--champagne) !important; padding:8px 14px;
+    border-radius:999px; font-size:12.5px; border:1px solid var(--line);
+    transition:.2s ease;
+  }
+  .nav-blog-pill:hover, .nav-blog-pill:focus-visible{ border-color:var(--gold-soft); color:var(--gold-soft) !important; }
+  @media (max-width:880px){ .nav-links{ display:none; } .nav-blog-pill{ display:inline-flex; } }
+
+  /* floating action button */
+  .fab{
+    position:fixed; right:20px; bottom:20px; z-index:60;
+    width:54px; height:54px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(135deg, #F0C36B, #C9A438 45%, #8A5A3B);
+    color:#1B1404; box-shadow: 0 12px 28px rgba(0,0,0,0.45);
+    opacity:0; pointer-events:none; transform: translateY(12px) scale(0.9);
+    transition: opacity .35s ease, transform .35s ease;
+  }
+  .fab.show{ opacity:1; pointer-events:auto; transform:none; }
+  .fab svg{ width:24px; height:24px; }
+  .fab:hover, .fab:focus-visible{ transform: translateY(-3px) scale(1.04); }
+
+  /* hero */
+  .hero{ position:relative; padding:36px 0 56px; overflow:hidden; }
+  .hero-kicker{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:15px; color:var(--gold-soft); letter-spacing:0.05em; margin-bottom:22px; position:relative; z-index:2; }
+  .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns: 1.1fr 0.9fr; gap:44px; align-items:center; }
+  .hero h1{ font-size:clamp(30px,4.4vw,46px); line-height:1.14; color:var(--champagne); }
+  .hero h1 em{ font-style:italic; color:var(--gold-soft); }
+  .hero p.lead{ margin-top:16px; max-width:440px; color:var(--champagne-dim); font-size:15.5px; }
+  .cta-row{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-top:26px; }
+  .btn{ display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:999px; font-size:13.5px; transition:.2s ease; border:1px solid transparent; }
+  .btn-primary{ background: linear-gradient(135deg, var(--gold-soft), var(--gold)); color:#1B1404; font-weight:500; }
+  .btn-primary:hover, .btn-primary:focus-visible{ transform: translateY(-2px); box-shadow:0 12px 26px rgba(201,164,56,0.28); }
+  .btn-ghost{ border-color: var(--line); color: var(--champagne); }
+  .btn-ghost:hover, .btn-ghost:focus-visible{ border-color: var(--gold-soft); color:var(--gold-soft); }
+  .hero-quote{ margin-top:26px; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:15.5px; color: var(--champagne-dim); border-left:1px solid var(--gold-soft); padding-left:14px; max-width:400px; }
+
+  .hero-art{ position:relative; min-height:420px; display:flex; align-items:center; justify-content:center; }
+  .portrait-wrap{ position:relative; width:300px; height:346px; }
+  .portrait-wrap .ring{ top:50%; left:50%; transform:translate(-50%,-50%); }
+  .photo-card{
+    position:absolute; z-index:3; left:50%; top:50%; transform: translate(-50%,-50%);
+    width:264px; aspect-ratio: 4/5;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow: 0 30px 60px -12px rgba(0,0,0,0.55), 0 0 0 1px rgba(228,200,116,0.35);
+  }
+  .photo-card img{ width:100%; height:100%; object-fit:cover; object-position:50% 22%; display:block; }
+  .photo-card::after{
+    content:""; position:absolute; inset:0; border-radius:14px;
+    box-shadow: inset 0 0 0 1px rgba(237,227,204,0.18);
+    pointer-events:none;
+  }
+  .photo-frame-corner{
+    position:absolute; width:22px; height:22px; border:1px solid var(--gold-soft); z-index:4; opacity:0.85;
+  }
+  .photo-frame-corner.tl{ top:-10px; left:-10px; border-right:none; border-bottom:none; }
+  .photo-frame-corner.br{ bottom:-10px; right:-10px; border-left:none; border-top:none; }
+  .hero-caption{ position:absolute; bottom:-30px; left:50%; transform:translateX(-50%); font-family:'Cormorant Garamond', serif; font-style:italic; font-size:13.5px; color: var(--gold-soft); white-space:nowrap; z-index:4; }
+
+  /* sections */
+  section{ position:relative; padding:56px 0; }
+  .alt{ background: var(--ink-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .section-head{ max-width:600px; margin-bottom:32px; }
+  .section-head h2{ font-size:clamp(24px,3vw,32px); color:var(--champagne); }
+  .section-head p{ margin-top:10px; color:var(--champagne-dim); font-size:14.5px; }
+  .center-head{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  .tagline{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:17px; color:var(--gold-soft); margin-top:6px; }
+  .brand-sub{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:14.5px; color:var(--champagne-dim); letter-spacing:0.03em; margin-top:2px; }
+  .ig-icon{ width:15px; height:15px; flex-shrink:0; }
+  .about-name{ font-size:clamp(26px,3.4vw,34px); color:var(--champagne); }
+
+  /* chip row (modalities) */
+  .chip-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; }
+  .chip{ display:inline-flex; align-items:center; gap:8px; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:9px 16px 9px 12px; font-size:13.5px; transition:.2s ease; }
+  .chip:hover{ border-color: rgba(201,164,56,0.45); }
+  .chip .g{ color:var(--gold-soft); font-family:'Cormorant Garamond', serif; font-style:italic; font-size:15px; }
+
+  .stat-row{ display:flex; gap:38px; margin-top:34px; flex-wrap:wrap; }
+  .stat{ display:flex; flex-direction:column; }
+  .stat-num{ font-family:'Cormorant Garamond', serif; font-size:30px; color:var(--gold-soft); line-height:1; }
+  .stat-label{ font-size:11.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--champagne-dim); margin-top:6px; }
+
+  /* services compact grid */
+  .services{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; }
+  .service-card{ background:var(--card); border:1px solid var(--line); border-radius: var(--radius); padding:20px 18px; }
+  .service-card .g{ color:var(--gold-soft); font-family:'Cormorant Garamond', serif; font-style:italic; font-size:19px; display:block; margin-bottom:8px; }
+  .service-card h3{ font-size:16.5px; color:var(--champagne); margin-bottom:5px; font-weight:500; }
+  .service-card p{ font-size:12.8px; color:var(--champagne-dim); line-height:1.5; }
+  @media (max-width:880px){ .services{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width:560px){ .services{ grid-template-columns: 1fr; } }
+
+  /* why + process combined */
+  .why-row{ display:flex; justify-content:center; flex-wrap:wrap; gap:26px; margin-top:8px; }
+  .why-item{ text-align:center; width:96px; }
+  .why-item .g{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:24px; color:var(--gold-soft); display:block; margin-bottom:6px; }
+  .why-item span{ font-size:12.5px; color:var(--champagne-dim); }
+
+  .process-row{ display:flex; justify-content:center; align-items:center; gap:10px; flex-wrap:wrap; margin-top:40px; font-size:13.5px; color:var(--champagne-dim); }
+  .process-row b{ color:var(--champagne); font-weight:500; }
+  .process-row .arrow{ color:var(--gold-soft); }
+
+  /* contact */
+  .contact{ text-align:center; position:relative; }
+  .contact h2{ font-size:clamp(26px,3.6vw,36px); }
+  .contact p.lead{ max-width:440px; margin:12px auto 26px; color:var(--champagne-dim); font-size:14.5px; }
+  .ig-btn{ display:inline-flex; align-items:center; gap:10px; padding:15px 30px; border-radius:999px; background: linear-gradient(135deg, #F0C36B, #C9A438 45%, #8A5A3B); color:#1B1404; font-size:14px; font-weight:500; transition:.2s ease; }
+  .ig-btn:hover, .ig-btn:focus-visible{ transform: translateY(-2px); box-shadow:0 16px 34px rgba(201,164,56,0.3); }
+  .ig-btn svg{ width:18px; height:18px; }
+  .tag-row{ display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-top:22px; }
+  .tag-pill{ font-size:11.5px; padding:6px 14px; border-radius:999px; border:1px solid var(--gold-soft); color:var(--gold-soft); }
+  .contact-quote{ margin-top:26px; font-family:'Cormorant Garamond', serif; font-style:italic; color: var(--champagne-dim); font-size:14.5px; }
+
+  /* blog */
+  .blog-intro{ max-width:640px; color:var(--champagne-dim); font-size:14.5px; margin-bottom:30px; }
+  .blog-intro em{ color:var(--gold-soft); font-style:italic; }
+  .blog-list{ display:flex; flex-direction:column; gap:10px; }
+  .blog-topic{
+    background:var(--card); border:1px solid var(--line); border-radius:14px;
+    overflow:hidden;
+  }
+  .blog-topic summary{
+    list-style:none; cursor:pointer; padding:16px 20px;
+    display:flex; align-items:center; gap:12px; font-size:15px; color:var(--champagne);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .blog-topic summary::-webkit-details-marker{ display:none; }
+  .blog-topic summary .g{ font-family:'Cormorant Garamond', serif; font-style:italic; color:var(--gold-soft); font-size:19px; flex-shrink:0; }
+  .blog-topic summary .t{ flex:1; }
+  .blog-topic summary .chevron{ color:var(--gold-soft); font-size:13px; transition: transform .25s ease; flex-shrink:0; }
+  .blog-topic[open] summary .chevron{ transform: rotate(90deg); }
+  .blog-topic .blog-body{ padding:0 20px 20px 52px; color:var(--champagne-dim); font-size:14px; line-height:1.7; }
+  .blog-cta{ margin-top:30px; text-align:center; }
+
+  footer{ border-top:1px solid var(--line); padding:32px 0; text-align:center; }
+  footer .brand{ justify-content:center; display:inline-flex; margin-bottom:8px; }
+  footer p{ font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color: rgba(237,227,204,0.4); }
+
+  @media (max-width: 880px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-art{ order:-1; min-height:340px; }
+    .portrait-wrap{ width:260px; height:300px; }
+    .photo-card{ width:230px; }
+  }
+  :focus-visible{ outline:2px solid var(--gold-soft); outline-offset:3px; }
+</style>
 </head>
 <body>
 
@@ -235,15 +467,18 @@
 
     <h3 style="font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-soft); font-family:'Jost',sans-serif; font-weight:500; margin-bottom:14px;">Yazılarım</h3>
     <div class="blog-list reveal" style="margin-bottom:40px;">
-      <a class="blog-topic" href="blog/dogum-haritasi-rehberi.html" style="display:block; text-decoration:none;">
-        <div class="summary-like" style="padding:16px 20px; display:flex; align-items:center; gap:12px; font-size:15px; color:var(--champagne);"><span class="g">✺</span><span class="t">Doğum Haritan Sana Ne Anlatır? Yeni Başlayanlar İçin Rehber</span><span class="chevron" style="transform:none;">→</span></div>
-      </a>
-      <a class="blog-topic" href="blog/iliski-uyum-astrolojisi.html" style="display:block; text-decoration:none;">
-        <div class="summary-like" style="padding:16px 20px; display:flex; align-items:center; gap:12px; font-size:15px; color:var(--champagne);"><span class="g">♡</span><span class="t">İlişkinde Hep Aynı Duvara mı Çarpıyorsun?</span><span class="chevron" style="transform:none;">→</span></div>
-      </a>
-      <a class="blog-topic" href="blog/2026-ruhsal-denge.html" style="display:block; text-decoration:none;">
-        <div class="summary-like" style="padding:16px 20px; display:flex; align-items:center; gap:12px; font-size:15px; color:var(--champagne);"><span class="g">◈</span><span class="t">2026'da Zihinsel ve Ruhsal Dengeni Korumanın 5 Yolu</span><span class="chevron" style="transform:none;">→</span></div>
-      </a>
+      <details class="blog-topic">
+        <summary><span class="g">✺</span><span class="t">Doğum Haritan Sana Ne Anlatır? Yeni Başlayanlar İçin Rehber</span><span class="chevron">›</span></summary>
+        <div class="blog-body">Doğum haritan, doğduğun anda gökyüzünün bir fotoğrafı. Güneş, Ay ve gezegenlerin o an nerede olduğunu gösteren bu harita, kişiliğinin, güçlü yanlarının ve zorlandığın alanların şifresini taşıyor. Danışanlarıma en çok sorulan sorulardan biri: "Burcumu biliyorum ama bu yetmiyor mu?" Cevap: hayır. Güneş burcun hikayenin sadece bir bölümü — Ay burcun duygusal dünyanı, Yükselen burcun dışarıya yansıyan halini, Merkür'ün konumu iletişim tarzını anlatır. Bir doğum haritası analizinde bu parçaları tek tek değil, birlikte okurum; çünkü asıl anlam, aralarındaki ilişkide saklı. Kendi haritanı merak ediyorsan, birlikte oturup satır satır okuyabiliriz.</div>
+      </details>
+      <details class="blog-topic">
+        <summary><span class="g">♡</span><span class="t">İlişkinde Hep Aynı Duvara mı Çarpıyorsun?</span><span class="chevron">›</span></summary>
+        <div class="blog-body">"Neden hep aynı tip insanlarla aynı sorunları yaşıyorum?" Danışanlarımdan en sık duyduğum cümlelerden biri bu. Astrolojik uyum, sadece "hangi burç hangi burçla anlaşır" basitliğinde değil. Venüs'ün konumu neyi sevdiğini, Mars'ın konumu nasıl çatıştığını, Ay'ların birbiriyle ilişkisi duygusal güvenliği nasıl kurduğunuzu anlatır. İki haritayı yan yana koyduğumda, bir ilişkinin neresinin kolay aktığını, neresinde bilinçli çaba gerektiğini net görebiliyorum. Bir ilişki uyum analizi seansında, ikinizin haritasını birlikte okuyor, nerede doğal bir akış olduğunu, nerede sabır ve iletişim gerektiğini konuşuyoruz. Kendinle ya da partnerinle bu farkındalığı kazanmak istersen, kapım açık.</div>
+      </details>
+      <details class="blog-topic">
+        <summary><span class="g">◈</span><span class="t">2026'da Zihinsel ve Ruhsal Dengeni Korumanın 5 Yolu</span><span class="chevron">›</span></summary>
+        <div class="blog-body">2026 hepimiz için hızlı, yoğun ve dijital bir yıl olmaya devam ediyor. Bu tempoda zihinsel ve ruhsal dengeyi korumak, lüks değil bir ihtiyaç. Danışanlarıma önerdiğim beş basit ama etkili adım var: Birincisi, günde birkaç dakika bilinçli nefes. İkincisi, duygularını bastırmak yerine EFT gibi tekniklerle serbest bırakmak. Üçüncüsü, zihnindeki tekrarlayan düşünce kalıplarını NLP ile fark etmek. Dördüncüsü, enerjini nelerin yükselttiğini nelerin tükettiğini takip etmek; bioenerji ve Reiki bu dengeyi desteklemekte çok değerli. Beşincisi, kendi doğum haritanı tanımak — çünkü kendini anlamak, dengeyi korumanın temeli. Bu yılı kendine daha çok zaman ayırarak geçirmek istersen, seninle tanışmak isterim.</div>
+      </details>
     </div>
 
     <h3 style="font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-soft); font-family:'Jost',sans-serif; font-weight:500; margin-bottom:14px;">Yöntemlerim</h3>
