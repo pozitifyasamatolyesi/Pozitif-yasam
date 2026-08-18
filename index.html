@@ -338,6 +338,20 @@
   .post-card-meta{ display:block; font-size:11.5px; color:var(--champagne-dim); letter-spacing:0.08em; text-transform:uppercase; margin-top:4px; }
   .post-card p{ font-size:14px; color:var(--champagne-dim); line-height:1.7; margin-bottom:12px; }
   .post-card p:last-child{ margin-bottom:0; }
+  .post-card h4{ font-size:16.5px; color:var(--champagne); margin:20px 0 8px; font-weight:500; }
+
+  /* teaser cards linking out to standalone blog pages */
+  .post-teaser{
+    display:block; background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:20px 22px; text-decoration:none; transition:.2s ease;
+  }
+  .post-teaser:hover{ border-color: rgba(201,164,56,0.4); transform: translateY(-2px); }
+  .post-teaser-head{ display:flex; align-items:flex-start; gap:12px; }
+  .post-teaser-head .g{ font-family:'Cormorant Garamond', serif; font-style:italic; color:var(--gold-soft); font-size:22px; line-height:1.3; flex-shrink:0; }
+  .post-teaser-title{ font-size:17px; color:var(--champagne); font-weight:500; line-height:1.3; }
+  .post-teaser-meta{ display:block; font-size:11.5px; color:var(--champagne-dim); letter-spacing:0.08em; text-transform:uppercase; margin-top:4px; }
+  .post-teaser-excerpt{ font-size:13.5px; color:var(--champagne-dim); margin-top:10px; line-height:1.6; }
+  .post-teaser-more{ display:inline-block; margin-top:12px; font-size:12.5px; color:var(--gold-soft); }
 
   footer{ border-top:1px solid var(--line); padding:32px 0; text-align:center; }
   footer .brand{ justify-content:center; display:inline-flex; margin-bottom:8px; }
@@ -516,10 +530,9 @@
     <div class="section-head reveal">
       <div class="eyebrow">Blog</div>
       <h2>Astroloji ve Şifa Üzerine Yazılarım</h2>
-      <p class="blog-intro">Danışanlarımdan en çok gelen sorulara ve seanslarımda kullandığım yöntemlere dair kısa yazılar hazırladım.</p>
+      <p class="blog-intro">Danışanlarımdan en çok gelen sorulara dair hazırladığım yazılar. Başlığa dokunarak devamını okuyabilirsin.</p>
     </div>
 
-    <h3 style="font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-soft); font-family:'Jost',sans-serif; font-weight:500; margin-bottom:14px;">Yazılarım</h3>
     <div class="post-grid reveal">
       <a class="post-teaser" href="blog/dogum-haritasi-rehberi.html">
         <div class="post-teaser-head">
@@ -554,38 +567,6 @@
         <p class="post-teaser-excerpt">Hızlı ve dijital bir yılda dengeni korumak için nefes, EFT, NLP ve daha fazlasını içeren 5 pratik öneri.</p>
         <span class="post-teaser-more">Devamını Oku →</span>
       </a>
-    </div>
-
-    <h3 style="font-size:15px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold-soft); font-family:'Jost',sans-serif; font-weight:500; margin-bottom:14px;">Yöntemlerim</h3>
-    <div class="blog-list reveal">
-      <details class="blog-topic">
-        <summary><span class="g">❖</span><span class="t">Holistik Tıp Sağlık Koçluğu Nedir?</span><span class="chevron">›</span></summary>
-        <div class="blog-body">Bedeni, zihni ve ruhu birbirinden ayrı düşünmüyorum. Holistik yaklaşım, bir sorunu yalnızca belirtisiyle değil, kök nedeniyle ele almak demek. Danışanlarımla çalışırken beslenmeden uyku düzenine, duygusal yüklerden yaşam alışkanlıklarına kadar bütünü görmeye çalışırım. Günümüzün hız ve stres dolu temposunda bu bütüncül bakış, kalıcı bir denge kurmanın en güvenilir yollarından biri. Koçluk seanslarımda seni bir bütün olarak dinliyor, sana özel bir yol haritası çıkarıyorum.</div>
-      </details>
-      <details class="blog-topic">
-        <summary><span class="g">✦</span><span class="t">EFT ile Duygusal Yüklerden Arınmak</span><span class="chevron">›</span></summary>
-        <div class="blog-body">EFT, parmak uçlarıyla belirli meridyen noktalarına nazikçe dokunarak duygusal yükleri bedenden serbest bırakma tekniği. Kaygı, eski bir korku ya da tıkanmış bir duygu üzerinde çalışırken sıkça başvurduğum yöntemlerden biri. Özellikle günümüzde kaygı ve tükenmişlik bu kadar yaygınken, EFT'nin hızlı rahatlama sağlayan etkisini seanslarımda yakından görüyorum. Sana da bu tekniği birebir seanslarda uygulayarak eşlik edebilirim.</div>
-      </details>
-      <details class="blog-topic">
-        <summary><span class="g">◐</span><span class="t">NLP: Zihin Kalıplarını Tanımak</span><span class="chevron">›</span></summary>
-        <div class="blog-body">NLP, zihnimizin düşünce ve inanç kalıplarını nasıl kurduğunu anlamamızı sağlıyor. "Neden hep aynı noktada takılıyorum?" sorusunun cevabı çoğu zaman, fark etmeden tekrar ettiğimiz zihinsel örüntülerde saklı. Koçluk seanslarımda NLP teknikleriyle bu kalıpları görünür kılıp, birlikte dönüştürmeye odaklanıyorum — çünkü değişim, önce fark etmekle başlıyor.</div>
-      </details>
-      <details class="blog-topic">
-        <summary><span class="g">◇</span><span class="t">Bioenerji: Enerji Alanında Denge</span><span class="chevron">›</span></summary>
-        <div class="blog-body">Bedenimiz sadece fiziksel bir yapı değil, aynı zamanda bir enerji alanı. Bioenerji çalışmalarında bu alandaki tıkanıklıkları fark edip dengelemeye çalışıyorum. Enerjisi düşük, sürekli yorgun hisseden pek çok danışanımda, bu çalışmaların fiziksel ve ruhsal iyileşmeye nasıl destek olduğuna tanık oluyorum. Seanslarımda enerjini yeniden dengelemen için birlikte çalışıyoruz.</div>
-      </details>
-      <details class="blog-topic">
-        <summary><span class="g">✥</span><span class="t">Usui Reiki ile Derin Bir Mola</span><span class="chevron">›</span></summary>
-        <div class="blog-body">Reiki, evrenin yaşam enerjisini ellerimle danışanıma aktardığım, çok eski ve bir o kadar da nazik bir şifa yöntemi. Bedeni derin bir gevşemeye davet eder, sinir sistemini sakinleştirir. Yoğun tempoda yaşayan pek çok kişi için Reiki seansları, kendine dönmek için sessiz bir mola oluyor. Sen de bu molaya ihtiyaç duyuyorsan, kapım her zaman açık.</div>
-      </details>
-      <details class="blog-topic">
-        <summary><span class="g">☾</span><span class="t">Spiritüel Koçluk: İçsel Pusulanı Bulmak</span><span class="chevron">›</span></summary>
-        <div class="blog-body">Herkesin hayatında bir amaç, bir "neden" arayışı var. Spiritüel koçlukta, danışanımın kendi içsel pusulasını bulmasına eşlik ediyorum — hazır cevaplar vermek yerine, doğru soruları birlikte sormak üzerine kurulu bir yolculuk bu. Bu yolculukta sana rehberlik etmek, işimin en anlamlı taraflarından biri.</div>
-      </details>
-      <details class="blog-topic">
-        <summary><span class="g">≈</span><span class="t">Nefes Koçluğu: En Güçlü Aracımız</span><span class="chevron">›</span></summary>
-        <div class="blog-body">Nefes, farkında olmadan en çok ihmal ettiğimiz ama en güçlü araçlarımızdan biri. Bilinçli nefes teknikleriyle sinir sistemini sakinleştirmek, kaygıyı azaltmak ve enerjiyi yükseltmek mümkün. Seanslarımda basit ama etkili nefes egzersizleriyle danışanlarımın bedenleriyle yeniden bağ kurmasına yardımcı oluyorum.</div>
-      </details>
     </div>
 
     <div class="blog-cta reveal">
