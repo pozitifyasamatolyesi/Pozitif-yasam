@@ -388,6 +388,41 @@
     .photo-card{ width:230px; }
   }
   :focus-visible{ outline:2px solid var(--gold-soft); outline-offset:3px; }
+
+  /* burç hesaplama aracı */
+  .calc-card{
+    background:var(--card); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px 28px; max-width:620px; margin:0 auto;
+  }
+  .calc-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .calc-field{ display:flex; flex-direction:column; gap:6px; }
+  .calc-field.full{ grid-column:1/-1; }
+  .calc-field label{ font-size:12px; letter-spacing:0.06em; color:var(--champagne-dim); text-transform:uppercase; }
+  .calc-field input, .calc-field select{
+    background:var(--ink-2); border:1px solid var(--line); border-radius:10px;
+    padding:11px 12px; color:var(--champagne); font-family:'Jost',sans-serif; font-size:14.5px;
+    outline:none; transition:border-color .2s ease;
+  }
+  .calc-field input:focus, .calc-field select:focus{ border-color:var(--gold-soft); }
+  .calc-btn{
+    margin-top:22px; width:100%; text-align:center; border:none; cursor:pointer;
+    background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+    color:#1B1404; font-weight:500; font-size:14.5px; padding:14px; border-radius:999px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .calc-btn:hover{ transform: translateY(-2px); box-shadow:0 12px 26px rgba(201,164,56,0.28); }
+  .calc-error{ color:#E7A0A0; font-size:13px; margin-top:10px; display:none; }
+  .calc-error.show{ display:block; }
+  .calc-result{ display:none; margin-top:28px; padding-top:24px; border-top:1px solid var(--line); }
+  .calc-result.show{ display:block; }
+  .calc-result-row{ display:flex; align-items:center; gap:16px; margin-bottom:16px; }
+  .calc-result-row .g{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:30px; color:var(--gold-soft); width:44px; text-align:center; flex-shrink:0; }
+  .calc-result-label{ font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--champagne-dim); }
+  .calc-result-value{ font-family:'Cormorant Garamond', serif; font-size:22px; color:var(--champagne); }
+  .calc-note{ font-size:12px; color:var(--champagne-dim); margin-top:18px; line-height:1.6; }
+  .calc-invite{ font-family:'Cormorant Garamond', serif; font-style:italic; font-size:19px; color:var(--gold-soft); text-align:center; margin-top:20px; }
+  .calc-cta{ margin-top:20px; text-align:center; }
+  @media (max-width:560px){ .calc-grid{ grid-template-columns:1fr; } .calc-card{ padding:26px 20px; } }
 </style>
 </head>
 <body>
@@ -400,6 +435,7 @@
       <a href="#yaklasim">Yaklaşım</a>
       <a href="#hizmetler">Hizmetler</a>
       <a href="#blog">Blog</a>
+      <a href="#hesaplama">Burç Hesapla</a>
       <a href="#iletisim">İletişim</a>
     </div>
     <div class="nav-actions">
@@ -625,6 +661,105 @@
   </div>
 </section>
 
+<section id="hesaplama" class="alt">
+  <div class="wrap">
+    <div class="section-head center-head reveal">
+      <div class="eyebrow center">Ücretsiz Araç</div>
+      <h2>Güneş Burcunu ve Yükseleninizi Hesapla</h2>
+      <p style="margin-left:auto; margin-right:auto;">Doğum tarihini, saatini ve yerini gir, anında öğren.</p>
+    </div>
+
+    <div class="calc-card reveal">
+      <div class="calc-grid">
+        <div class="calc-field">
+          <label for="calc-date">Doğum Tarihi</label>
+          <input type="date" id="calc-date">
+        </div>
+        <div class="calc-field">
+          <label for="calc-time">Doğum Saati</label>
+          <input type="time" id="calc-time">
+        </div>
+        <div class="calc-field full">
+          <label for="calc-city">Doğum Yeri</label>
+          <select id="calc-city">
+            <option value="41.0082,28.9784">İstanbul</option>
+            <option value="39.9334,32.8597">Ankara</option>
+            <option value="38.4237,27.1428">İzmir</option>
+            <option value="36.8969,30.7133">Antalya</option>
+            <option value="40.1826,29.0665">Bursa</option>
+            <option value="37.0000,35.3213">Adana</option>
+            <option value="37.8746,32.4932">Konya</option>
+            <option value="37.0662,37.3833">Gaziantep</option>
+            <option value="37.1591,38.7969">Şanlıurfa</option>
+            <option value="36.8000,34.6333">Mersin</option>
+            <option value="37.9144,40.2306">Diyarbakır</option>
+            <option value="38.7312,35.4787">Kayseri</option>
+            <option value="39.7767,30.5206">Eskişehir</option>
+            <option value="41.2867,36.3300">Samsun</option>
+            <option value="37.7765,29.0864">Denizli</option>
+            <option value="38.3552,38.3095">Malatya</option>
+            <option value="41.0027,39.7168">Trabzon</option>
+            <option value="39.9000,41.2700">Erzurum</option>
+            <option value="38.4891,43.4089">Van</option>
+            <option value="38.6810,39.2264">Elazığ</option>
+            <option value="38.6191,27.4289">Manisa</option>
+            <option value="40.7654,29.9408">Kocaeli</option>
+            <option value="40.6940,30.4358">Sakarya</option>
+            <option value="39.6484,27.8826">Balıkesir</option>
+            <option value="37.5858,36.9371">Kahramanmaraş</option>
+            <option value="41.1828,41.8183">Artvin</option>
+            <option value="37.8560,27.8416">Aydın</option>
+            <option value="37.2154,28.3636">Muğla</option>
+            <option value="40.9833,27.5167">Tekirdağ</option>
+            <option value="40.9839,37.8764">Ordu</option>
+            <option value="41.0201,40.5234">Rize</option>
+            <option value="other">Diğer / Yurt Dışı</option>
+          </select>
+        </div>
+        <div class="calc-field" id="calc-lat-wrap" style="display:none;">
+          <label for="calc-lat">Enlem (Latitude)</label>
+          <input type="number" id="calc-lat" step="0.0001" placeholder="örn. 41.0082">
+        </div>
+        <div class="calc-field" id="calc-lon-wrap" style="display:none;">
+          <label for="calc-lon">Boylam (Longitude)</label>
+          <input type="number" id="calc-lon" step="0.0001" placeholder="örn. 28.9784">
+        </div>
+        <div class="calc-field" id="calc-tz-wrap" style="display:none;">
+          <label for="calc-tz">UTC Farkı (örn. Türkiye için 3)</label>
+          <input type="number" id="calc-tz" step="0.5" placeholder="3">
+        </div>
+      </div>
+      <button class="calc-btn" id="calc-btn" type="button">Hesapla</button>
+      <p class="calc-error" id="calc-error">Lütfen doğum tarihi, saati ve yerini eksiksiz gir.</p>
+
+      <div class="calc-result" id="calc-result">
+        <div class="calc-result-row">
+          <span class="g" id="calc-sun-icon">☉</span>
+          <div>
+            <div class="calc-result-label">Güneş Burcun</div>
+            <div class="calc-result-value" id="calc-sun-value">—</div>
+          </div>
+        </div>
+        <div class="calc-result-row">
+          <span class="g" id="calc-asc-icon">↑</span>
+          <div>
+            <div class="calc-result-label">Yükselen Burcun</div>
+            <div class="calc-result-value" id="calc-asc-value">—</div>
+          </div>
+        </div>
+        <p class="calc-note">Bu sonuç yaklaşık bir hesaplamadır. Yükselen burç, doğum saatinin dakikasına kadar hassas olduğu için tam ve kişiye özel bir doğum haritası analizi için birlikte oturup haritanı satır satır okumamız en sağlıklısı.</p>
+        <p class="calc-invite">Doğum haritana bakmamı ister misin?</p>
+        <div class="calc-cta">
+          <a class="btn btn-primary" href="https://instagram.com/pozitifyasam2026" target="_blank" rel="noopener noreferrer">
+            <svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+            Detaylı Analiz İçin Instagram'dan Yaz
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="iletisim" class="contact">
   <div class="wrap reveal">
     <div class="eyebrow center">İletişim</div>
@@ -694,6 +829,126 @@
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+})();
+</script>
+
+<script>
+(function(){
+  var SIGNS = [
+    ["Koç","✦"],["Boğa","✧"],["İkizler","✺"],["Yengeç","☾"],
+    ["Aslan","☉"],["Başak","✥"],["Terazi","♡"],["Akrep","◈"],
+    ["Yay","◇"],["Oğlak","◐"],["Kova","≈"],["Balık","♓"]
+  ];
+
+  function sunSign(month, day){
+    var cusps = [
+      {m:1,d:20},{m:2,d:19},{m:3,d:21},{m:4,d:20},{m:5,d:21},{m:6,d:21},
+      {m:7,d:23},{m:8,d:23},{m:9,d:23},{m:10,d:23},{m:11,d:22},{m:12,d:22}
+    ];
+    var names = ["Kova","Balık","Koç","Boğa","İkizler","Yengeç","Aslan","Başak","Terazi","Akrep","Yay","Oğlak"];
+    for (var j=cusps.length-1;j>=0;j--){
+      if (month > cusps[j].m || (month === cusps[j].m && day >= cusps[j].d)) return names[j];
+    }
+    return "Oğlak";
+  }
+
+  function toJulianDay(year, month, day, hourUTC){
+    if (month <= 2){ year -= 1; month += 12; }
+    var A = Math.floor(year/100);
+    var B = 2 - A + Math.floor(A/4);
+    return Math.floor(365.25*(year+4716)) + Math.floor(30.6001*(month+1)) + day + hourUTC/24 + B - 1524.5;
+  }
+
+  function ascendantSign(jd, latDeg, lonEastDeg){
+    var T = (jd - 2451545.0) / 36525.0;
+    var gmst = 280.46061837 + 360.98564736629*(jd - 2451545.0) + 0.000387933*T*T - (Math.pow(T,3))/38710000;
+    gmst = ((gmst % 360) + 360) % 360;
+    var ramc = (gmst + lonEastDeg) % 360;
+    if (ramc < 0) ramc += 360;
+    var epsDeg = 23.439291 - 0.0130042*T;
+    var eps = epsDeg * Math.PI/180;
+    var ramcR = ramc * Math.PI/180;
+    var latR = latDeg * Math.PI/180;
+    var y = -Math.cos(ramcR);
+    var x = Math.sin(ramcR)*Math.cos(eps) + Math.tan(latR)*Math.sin(eps);
+    var asc = Math.atan2(y, x) * 180/Math.PI;
+    asc = ((asc % 360) + 360) % 360;
+    var idx = Math.floor(asc/30);
+    return SIGNS[idx][0];
+  }
+
+  var citySelect = document.getElementById('calc-city');
+  var latWrap = document.getElementById('calc-lat-wrap');
+  var lonWrap = document.getElementById('calc-lon-wrap');
+  var tzWrap = document.getElementById('calc-tz-wrap');
+
+  if (citySelect){
+    citySelect.addEventListener('change', function(){
+      var isOther = citySelect.value === 'other';
+      latWrap.style.display = isOther ? 'flex' : 'none';
+      lonWrap.style.display = isOther ? 'flex' : 'none';
+      tzWrap.style.display = isOther ? 'flex' : 'none';
+    });
+  }
+
+  var btn = document.getElementById('calc-btn');
+  if (btn){
+    btn.addEventListener('click', function(){
+      var dateEl = document.getElementById('calc-date');
+      var timeEl = document.getElementById('calc-time');
+      var errorEl = document.getElementById('calc-error');
+      var resultEl = document.getElementById('calc-result');
+
+      var dateVal = dateEl.value;
+      var timeVal = timeEl.value || '12:00';
+
+      if (!dateVal){
+        errorEl.classList.add('show');
+        resultEl.classList.remove('show');
+        return;
+      }
+      errorEl.classList.remove('show');
+
+      var parts = dateVal.split('-');
+      var year = parseInt(parts[0],10), month = parseInt(parts[1],10), day = parseInt(parts[2],10);
+      var tparts = timeVal.split(':');
+      var hourLocal = parseInt(tparts[0],10) + parseInt(tparts[1],10)/60;
+
+      var lat, lon, tzOffset;
+      if (citySelect.value === 'other'){
+        lat = parseFloat(document.getElementById('calc-lat').value);
+        lon = parseFloat(document.getElementById('calc-lon').value);
+        tzOffset = parseFloat(document.getElementById('calc-tz').value);
+        if (isNaN(lat) || isNaN(lon) || isNaN(tzOffset)){
+          errorEl.textContent = 'Lütfen enlem, boylam ve UTC farkını gir.';
+          errorEl.classList.add('show');
+          resultEl.classList.remove('show');
+          return;
+        }
+      } else {
+        var cv = citySelect.value.split(',');
+        lat = parseFloat(cv[0]);
+        lon = parseFloat(cv[1]);
+        tzOffset = 3; // Türkiye UTC+3
+      }
+
+      var hourUTC = hourLocal - tzOffset;
+      var jd = toJulianDay(year, month, day, hourUTC);
+
+      var sSign = sunSign(month, day);
+      var aSign = ascendantSign(jd, lat, lon);
+
+      var sunIconMap = {}; SIGNS.forEach(function(s){ sunIconMap[s[0]] = s[1]; });
+
+      document.getElementById('calc-sun-value').textContent = sSign;
+      document.getElementById('calc-sun-icon').textContent = sunIconMap[sSign] || '☉';
+      document.getElementById('calc-asc-value').textContent = aSign;
+      document.getElementById('calc-asc-icon').textContent = sunIconMap[aSign] || '↑';
+
+      resultEl.classList.add('show');
+      resultEl.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    });
+  }
 })();
 </script>
 
