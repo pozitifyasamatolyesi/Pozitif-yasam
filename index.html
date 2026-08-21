@@ -676,45 +676,138 @@
           <input type="date" id="calc-date">
         </div>
         <div class="calc-field">
-          <label for="calc-time">Doğum Saati</label>
-          <input type="time" id="calc-time">
+          <label for="calc-hour">Doğum Saati (Saat)</label>
+          <select id="calc-hour">
+            <option value="">Saat seç</option>
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label for="calc-min">Doğum Saati (Dakika)</label>
+          <select id="calc-min">
+            <option value="">Dakika seç</option>
+            <option value="00">00</option>
+            <option value="05">05</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="35">35</option>
+            <option value="40">40</option>
+            <option value="45">45</option>
+            <option value="50">50</option>
+            <option value="55">55</option>
+          </select>
         </div>
         <div class="calc-field full">
           <label for="calc-city">Doğum Yeri</label>
           <select id="calc-city">
-            <option value="41.0082,28.9784">İstanbul</option>
-            <option value="39.9334,32.8597">Ankara</option>
-            <option value="38.4237,27.1428">İzmir</option>
-            <option value="36.8969,30.7133">Antalya</option>
-            <option value="40.1826,29.0665">Bursa</option>
             <option value="37.0000,35.3213">Adana</option>
-            <option value="37.8746,32.4932">Konya</option>
-            <option value="37.0662,37.3833">Gaziantep</option>
-            <option value="37.1591,38.7969">Şanlıurfa</option>
-            <option value="36.8000,34.6333">Mersin</option>
-            <option value="37.9144,40.2306">Diyarbakır</option>
-            <option value="38.7312,35.4787">Kayseri</option>
-            <option value="39.7767,30.5206">Eskişehir</option>
-            <option value="41.2867,36.3300">Samsun</option>
-            <option value="37.7765,29.0864">Denizli</option>
-            <option value="38.3552,38.3095">Malatya</option>
-            <option value="41.0027,39.7168">Trabzon</option>
-            <option value="39.9000,41.2700">Erzurum</option>
-            <option value="38.4891,43.4089">Van</option>
-            <option value="38.6810,39.2264">Elazığ</option>
-            <option value="38.6191,27.4289">Manisa</option>
-            <option value="40.7654,29.9408">Kocaeli</option>
-            <option value="40.6940,30.4358">Sakarya</option>
-            <option value="39.6484,27.8826">Balıkesir</option>
-            <option value="37.5858,36.9371">Kahramanmaraş</option>
+            <option value="37.7648,38.2786">Adıyaman</option>
+            <option value="38.7507,30.5567">Afyonkarahisar</option>
+            <option value="39.7191,43.0503">Ağrı</option>
+            <option value="38.3687,34.0360">Aksaray</option>
+            <option value="40.6499,35.8353">Amasya</option>
+            <option value="39.9334,32.8597">Ankara</option>
+            <option value="36.8969,30.7133">Antalya</option>
+            <option value="41.1105,42.7022">Ardahan</option>
             <option value="41.1828,41.8183">Artvin</option>
             <option value="37.8560,27.8416">Aydın</option>
+            <option value="39.6484,27.8826">Balıkesir</option>
+            <option value="41.5811,32.4610">Bartın</option>
+            <option value="37.8812,41.1351">Batman</option>
+            <option value="40.2552,40.2249">Bayburt</option>
+            <option value="40.1428,29.9793">Bilecik</option>
+            <option value="38.8855,40.4966">Bingöl</option>
+            <option value="38.3938,42.1232">Bitlis</option>
+            <option value="40.7392,31.6089">Bolu</option>
+            <option value="37.7203,30.2908">Burdur</option>
+            <option value="40.1826,29.0665">Bursa</option>
+            <option value="40.1553,26.4142">Çanakkale</option>
+            <option value="40.6013,33.6134">Çankırı</option>
+            <option value="40.5506,34.9556">Çorum</option>
+            <option value="37.7765,29.0864">Denizli</option>
+            <option value="37.9144,40.2306">Diyarbakır</option>
+            <option value="40.8438,31.1565">Düzce</option>
+            <option value="41.6771,26.5557">Edirne</option>
+            <option value="38.6810,39.2264">Elazığ</option>
+            <option value="39.7500,39.5000">Erzincan</option>
+            <option value="39.9000,41.2700">Erzurum</option>
+            <option value="39.7767,30.5206">Eskişehir</option>
+            <option value="37.0662,37.3833">Gaziantep</option>
+            <option value="40.9128,38.3895">Giresun</option>
+            <option value="40.4386,39.5086">Gümüşhane</option>
+            <option value="37.5744,43.7408">Hakkari</option>
+            <option value="36.4018,36.3498">Hatay</option>
+            <option value="39.8880,44.0048">Iğdır</option>
+            <option value="37.7648,30.5566">Isparta</option>
+            <option value="41.0082,28.9784">İstanbul</option>
+            <option value="38.4237,27.1428">İzmir</option>
+            <option value="37.5858,36.9371">Kahramanmaraş</option>
+            <option value="41.2061,32.6204">Karabük</option>
+            <option value="37.1759,33.2287">Karaman</option>
+            <option value="40.6013,43.0975">Kars</option>
+            <option value="41.3887,33.7827">Kastamonu</option>
+            <option value="38.7312,35.4787">Kayseri</option>
+            <option value="36.7184,37.1212">Kilis</option>
+            <option value="39.8468,33.5153">Kırıkkale</option>
+            <option value="41.7333,27.2167">Kırklareli</option>
+            <option value="39.1425,34.1709">Kırşehir</option>
+            <option value="40.7654,29.9408">Kocaeli</option>
+            <option value="37.8746,32.4932">Konya</option>
+            <option value="39.4167,29.9833">Kütahya</option>
+            <option value="38.3552,38.3095">Malatya</option>
+            <option value="38.6191,27.4289">Manisa</option>
+            <option value="37.3212,40.7245">Mardin</option>
+            <option value="36.8000,34.6333">Mersin</option>
             <option value="37.2154,28.3636">Muğla</option>
-            <option value="40.9833,27.5167">Tekirdağ</option>
+            <option value="38.9462,41.7539">Muş</option>
+            <option value="38.6939,34.6857">Nevşehir</option>
+            <option value="37.9667,34.6833">Niğde</option>
             <option value="40.9839,37.8764">Ordu</option>
+            <option value="37.0742,36.2478">Osmaniye</option>
             <option value="41.0201,40.5234">Rize</option>
-            <option value="other">Diğer / Yurt Dışı</option>
-          </select>
+            <option value="40.6940,30.4358">Sakarya</option>
+            <option value="41.2867,36.3300">Samsun</option>
+            <option value="37.9333,41.9500">Siirt</option>
+            <option value="42.0231,35.1531">Sinop</option>
+            <option value="39.7477,37.0179">Sivas</option>
+            <option value="37.1591,38.7969">Şanlıurfa</option>
+            <option value="37.4187,42.4918">Şırnak</option>
+            <option value="40.9833,27.5167">Tekirdağ</option>
+            <option value="40.3167,36.5500">Tokat</option>
+            <option value="41.0027,39.7168">Trabzon</option>
+            <option value="39.3074,39.4388">Tunceli</option>
+            <option value="38.6823,29.4082">Uşak</option>
+            <option value="38.4891,43.4089">Van</option>
+            <option value="40.6500,29.2667">Yalova</option>
+            <option value="39.8181,34.8147">Yozgat</option>
+            <option value="41.4564,31.7987">Zonguldak</option>
+            <option value="other">Diğer / Yurt Dışı</option>          </select>
         </div>
         <div class="calc-field" id="calc-lat-wrap" style="display:none;">
           <label for="calc-lat">Enlem (Latitude)</label>
@@ -895,14 +988,17 @@
   if (btn){
     btn.addEventListener('click', function(){
       var dateEl = document.getElementById('calc-date');
-      var timeEl = document.getElementById('calc-time');
+      var hourEl = document.getElementById('calc-hour');
+      var minEl = document.getElementById('calc-min');
       var errorEl = document.getElementById('calc-error');
       var resultEl = document.getElementById('calc-result');
 
       var dateVal = dateEl.value;
-      var timeVal = timeEl.value || '12:00';
+      var hourVal = hourEl.value;
+      var minVal = minEl.value;
 
-      if (!dateVal){
+      if (!dateVal || hourVal === '' || minVal === ''){
+        errorEl.textContent = 'Lütfen doğum tarihi, saati ve dakikasını eksiksiz seç.';
         errorEl.classList.add('show');
         resultEl.classList.remove('show');
         return;
@@ -911,8 +1007,7 @@
 
       var parts = dateVal.split('-');
       var year = parseInt(parts[0],10), month = parseInt(parts[1],10), day = parseInt(parts[2],10);
-      var tparts = timeVal.split(':');
-      var hourLocal = parseInt(tparts[0],10) + parseInt(tparts[1],10)/60;
+      var hourLocal = parseInt(hourVal,10) + parseInt(minVal,10)/60;
 
       var lat, lon, tzOffset;
       if (citySelect.value === 'other'){
