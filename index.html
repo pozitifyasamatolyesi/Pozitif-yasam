@@ -121,6 +121,18 @@
       "datePublished": "2026-08-18",
       "dateModified": "2026-08-18",
       "inLanguage": "tr-TR"
+    },
+    {
+      "@type": "BlogPosting",
+      "@id": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/sinastri-haritasi-nedir.html",
+      "headline": "Sinastri Haritası Nedir? İki Kişinin Uyumu Nasıl Okunur?",
+      "description": "Sinastri haritası nedir, iki doğum haritası üst üste konunca ne görülür? Lale Zere, kapsamlı sinastri analizinde nelere baktığını anlatıyor.",
+      "author": { "@type": "Person", "name": "Lale Zere" },
+      "publisher": { "@type": "Organization", "name": "Pozitif Yaşam Atölyesi" },
+      "mainEntityOfPage": "https://pozitifyasamatolyesi.github.io/Pozitif-yasam/sinastri-haritasi-nedir.html",
+      "datePublished": "2026-08-21",
+      "dateModified": "2026-08-21",
+      "inLanguage": "tr-TR"
     }
   ]
 }
@@ -649,6 +661,17 @@
         <p class="post-teaser-excerpt">"Tanışır tanışmaz bir şey hissettim" cümlesinin arkasında astrolojik olarak neler var?</p>
         <span class="post-teaser-more">Devamını Oku →</span>
       </a>
+      <a class="post-teaser" href="sinastri-haritasi-nedir.html">
+        <div class="post-teaser-head">
+          <span class="g">⚭</span>
+          <div>
+            <h3 class="post-teaser-title">Sinastri Haritası Nedir? İki Kişinin Uyumu Nasıl Okunur?</h3>
+            <span class="post-teaser-meta">İlişki Astrolojisi · 6 dk okuma</span>
+          </div>
+        </div>
+        <p class="post-teaser-excerpt">İki doğum haritası üst üste konduğunda ortaya çıkan resme sinastri deniyor — bir ilişki astrolojik olarak nasıl "okunur"?</p>
+        <span class="post-teaser-more">Devamını Oku →</span>
+      </a>
     </div>
 
     <div class="blog-cta reveal">
@@ -945,6 +968,23 @@
     return "Oğlak";
   }
 
+  function turkeyUTCOffset(year, month, day){
+    // Türkiye 8 Eylül 2016'dan itibaren kalıcı olarak UTC+3
+    if (year > 2016) return 3;
+    if (year === 2016 && (month > 9 || (month === 9 && day >= 8))) return 3;
+    // Tarihsel olarak yaz/kış saati uygulanan dönemler (yaklaşık): 1940-1952, 1962-1965, 1973-1978, 1985-2016
+    var dstYear = (year >= 1985 && year <= 2016) ||
+                  (year >= 1973 && year <= 1978) ||
+                  (year >= 1962 && year <= 1965) ||
+                  (year >= 1940 && year <= 1952);
+    if (!dstYear) return 2; // o yıl boyunca sabit UTC+2
+    // yaz/kış saati uygulanan bir yıl içinde, yaklaşık geçiş penceresi (Mart sonu - Ekim sonu)
+    if (month >= 4 && month <= 9) return 3;
+    if (month === 3 && day >= 25) return 3;
+    if (month === 10 && day <= 25) return 3;
+    return 2;
+  }
+
   function toJulianDay(year, month, day, hourUTC){
     if (month <= 2){ year -= 1; month += 12; }
     var A = Math.floor(year/100);
@@ -1024,7 +1064,7 @@
         var cv = citySelect.value.split(',');
         lat = parseFloat(cv[0]);
         lon = parseFloat(cv[1]);
-        tzOffset = 3; // Türkiye UTC+3
+        tzOffset = turkeyUTCOffset(year, month, day);
       }
 
       var hourUTC = hourLocal - tzOffset;
